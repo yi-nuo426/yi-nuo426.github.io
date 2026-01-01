@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Post to X
-        uses: captradeoff/x-post-action@v1
+        uses: captradeoff/x-post-action@v1.2
         with:
           appKey: ${{ secrets.X_APP_KEY }}
           appSecret: ${{ secrets.X_APP_SECRET }}
