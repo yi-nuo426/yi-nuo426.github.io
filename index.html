@@ -28,6 +28,11 @@
             background-color: var(--light);
         }
 
+        /* Language Toggle Classes */
+        .lang-zh {
+            display: none;
+        }
+
         /* Navigation */
         nav {
             background-color: white;
@@ -53,6 +58,12 @@
             color: var(--primary);
         }
 
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -68,6 +79,25 @@
 
         nav a:hover {
             color: var(--primary);
+        }
+
+        /* Language Button */
+        .lang-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary-dark);
         }
 
         /* Hero Section */
@@ -164,6 +194,7 @@
         .work-container {
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
         }
 
         .card {
@@ -173,22 +204,43 @@
             margin-bottom: 2rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card.edu-card {
+            border-left: 4px solid var(--secondary);
         }
 
         .card:hover {
             transform: translateY(-5px);
         }
 
-        .card h3 {
-            color: var(--secondary);
-            font-size: 1.5rem;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 0.5rem;
         }
 
-        .card h4 {
+        .card h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        .card .date {
             color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: #e0f2f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .card h4 {
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
             font-weight: 500;
+            font-size: 1.1rem;
         }
 
         /* Skills Tag */
@@ -200,12 +252,13 @@
         }
 
         .skill-tag {
-            background: #e0f2f1;
-            color: var(--primary-dark);
+            background: #f1f3f5;
+            color: var(--secondary);
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+            border: 1px solid #e9ecef;
         }
 
         /* Open Source Highlight */
@@ -224,14 +277,26 @@
             background-color: var(--primary);
         }
 
-        .cncf-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.2);
-            max-width: 600px;
+        .os-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .os-badge {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .os-badge:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
         /* Footer */
@@ -264,11 +329,17 @@
                 text-align: center;
                 padding-top: 6rem;
             }
-            .about-grid {
+            .about-grid, .os-grid {
                 grid-template-columns: 1fr;
             }
+            .card-header {
+                flex-direction: column;
+            }
+            .card .date {
+                margin-top: 0.5rem;
+            }
             nav ul {
-                display: none; /* Mobile menu can be added later */
+                display: none; 
             }
         }
     </style>
@@ -276,19 +347,42 @@
 <body>
 
     <nav>
-        <a href="#" class="logo">Yi <span>Nuo</span></a>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#opensource">Open Source</a></li>
-        </ul>
+        <a href="#" class="logo">
+            <span class="lang-en">Yi <span>Nuo</span></span>
+            <span class="lang-zh">一<span>諾</span></span>
+        </a>
+        <div class="nav-controls">
+            <ul>
+                <li>
+                    <a href="#about" class="lang-en">About</a>
+                    <a href="#about" class="lang-zh">關於我</a>
+                </li>
+                <li>
+                    <a href="#experience" class="lang-en">Experience & Education</a>
+                    <a href="#experience" class="lang-zh">工作與教育背景</a>
+                </li>
+                <li>
+                    <a href="#opensource" class="lang-en">Open Source</a>
+                    <a href="#opensource" class="lang-zh">開源貢獻</a>
+                </li>
+            </ul>
+            <button class="lang-btn" onclick="toggleLanguage()">
+                <i class="fas fa-globe"></i> <span id="lang-text">中文</span>
+            </button>
+        </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm Yi Nuo.</h1>
-            <h2>IT Officer & Open Source Champion</h2>
-            <p>I am a 26-year-old technologist dedicated to building modern, robust applications while pioneering open-source culture and Linux adoption within traditional enterprise IT landscapes.</p>
+            <h1 class="lang-en">Hi, I'm Yi Nuo.</h1>
+            <h1 class="lang-zh">你好，我是一諾。</h1>
+            
+            <h2 class="lang-en">IT Officer & Open Source Champion</h2>
+            <h2 class="lang-zh">資訊科技主任 & 開源文化倡導者</h2>
+            
+            <p class="lang-en">I am a 26-year-old technologist dedicated to building modern, robust applications while pioneering open-source culture and Linux adoption within traditional enterprise IT landscapes.</p>
+            <p class="lang-zh">我是一名26歲的技術開發者，致力於構建現代化、穩健的應用程式，同時在傳統企業IT環境中引領開源文化和Linux基礎設施的普及。</p>
+            
             <div class="social-links" style="text-align: left; margin-top: 2rem;">
                 <a href="https://github.com/yi-nuo426" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -296,66 +390,166 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="yi-nuo-hku.png" alt="Yi Nuo - IT Professional at Hong Kong University">
+            <img src="yi-nuo-hku.png" alt="Yi Nuo">
         </div>
     </section>
 
     <section id="about">
-        <h2 class="section-title">The Mission</h2>
+        <h2 class="section-title lang-en">The Mission</h2>
+        <h2 class="section-title lang-zh">我的使命</h2>
+        
         <div class="about-grid">
             <div>
-                <p>Hello! I'm an energetic software developer and IT professional with over three years of experience navigating the dynamic intersection of enterprise technology and digital transformation. I currently serve on the IT team at the prestigious Hong Kong University (HKU).</p>
+                <p class="lang-en">Hello! I'm an energetic software developer and IT professional with over three years of experience navigating the dynamic intersection of enterprise technology and digital transformation. I currently serve on the IT team at the prestigious Hong Kong University (HKU).</p>
+                <p class="lang-zh">你好！我是一名充滿活力的軟體開發者和IT專業人員，擁有超過三年的工作經驗，在企業技術與數位轉型的交匯處不斷探索。我目前在知名學府——香港大學 (HKU) 的IT團隊任職。</p>
                 <br>
-                <p>My core drive? <strong>Modernization.</strong> I am deeply passionate about introducing Linux-based infrastructures and fostering a true open-source culture on our main campus. I believe that working and learning openly is the fastest path to innovation.</p>
+                <p class="lang-en">My core drive? <strong>Modernization.</strong> I am deeply passionate about introducing Linux-based infrastructures and fostering a true open-source culture on our main campus. I believe that working and learning openly is the fastest path to innovation.</p>
+                <p class="lang-zh">我的核心驅動力是什麼？<strong>現代化。</strong> 我非常熱衷於在我們的主校區引入基於Linux的基礎設施並培養真正的開源文化。我相信開放式的工作與學習是實現創新的最快途徑。</p>
             </div>
             <div>
                 <div class="mission-box">
-                    <h3><i class="fas fa-fire-alt" style="color: var(--primary);"></i> Driving Cultural Shift</h3>
-                    <p style="margin-top: 10px;">Navigating systemic change is challenging. While I have executive support, bridging the gap between legacy pacing and modern, agile technology execution can be frustrating. However, this friction only fuels my resilience. I am committed to proving the value of open-source methodologies, one project and one deployment at a time.</p>
+                    <h3 class="lang-en"><i class="fas fa-fire-alt" style="color: var(--primary);"></i> Driving Cultural Shift</h3>
+                    <h3 class="lang-zh"><i class="fas fa-fire-alt" style="color: var(--primary);"></i> 推動文化轉變</h3>
+                    
+                    <p class="lang-en" style="margin-top: 10px;">Navigating systemic change is challenging. While I have executive support, bridging the gap between legacy pacing and modern, agile technology execution can be frustrating. Operating within a heavily Windows-centric environment at HKU adds friction, but this only fuels my resilience. I am committed to proving the value of open-source methodologies, one project and one deployment at a time.</p>
+                    <p class="lang-zh" style="margin-top: 10px;">引導系統性變革充滿挑戰。雖然我得到了管理層的支持，但在傳統的步伐與現代敏捷技術執行之間取得平衡有時會讓人感到挫折。在港大傳統以Windows為主的IT環境中運行增加了推廣開源的難度，但這種摩擦反而激發了我的韌性。我致力於透過每一個專案和每一次部署，來證明開源方法的價值。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="experience" style="background: var(--light);">
-        <h2 class="section-title">Professional Experience</h2>
+        <h2 class="section-title lang-en">Experience & Education</h2>
+        <h2 class="section-title lang-zh">工作與教育背景</h2>
+        
         <div class="work-container">
+            
             <div class="card">
-                <h3>Programmer (IT Officer)</h3>
-                <h4>Clinical Trials Centre (HKU-CTC) | The University of Hong Kong</h4>
-                <p>Working at a leading clinical trials management platform under HKUMed, I manage and facilitate the technology behind international-standard clinical trials on new drugs and medical devices.</p>
+                <div class="card-header">
+                    <div>
+                        <h3 class="lang-en">Programmer (IT Officer)</h3>
+                        <h3 class="lang-zh">程式設計師 (資訊科技主任)</h3>
+                        <h4 class="lang-en">Clinical Trials Centre (HKU-CTC) | The University of Hong Kong</h4>
+                        <h4 class="lang-zh">臨床試驗中心 (HKU-CTC) | 香港大學</h4>
+                    </div>
+                    <span class="date lang-en">Current</span>
+                    <span class="date lang-zh">目前就職</span>
+                </div>
                 
-                <ul style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
+                <p class="lang-en">Operating within a traditionally Windows-centric IT ecosystem at a leading clinical trials management platform under HKUMed. I manage and facilitate the technology behind international-standard clinical trials on new drugs and medical devices, while championing modern DevOps pipelines.</p>
+                <p class="lang-zh">在香港大學醫學院下屬的頂尖臨床試驗管理平台，於傳統以Windows為主的IT生態系統中運行。我負責管理和推動符合國際標準的新藥及醫療設備臨床試驗背後的技術支援，同時大力倡導現代化的DevOps流程。</p>
+                
+                <ul class="lang-en" style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
                     <li>Design, develop, and deploy in-house IT systems, web applications, and web services supporting crucial medical research.</li>
                     <li>Analyze user requirements, execute system/database architectural design, and manage data migration.</li>
-                    <li>Research, evaluate, and recommend cutting-edge technologies to accelerate our digital transformation goals.</li>
+                    <li>Research, evaluate, and recommend cutting-edge technologies to accelerate digital transformation.</li>
+                </ul>
+                
+                <ul class="lang-zh" style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li>設計、開發和部署內部IT系統、網路應用程式和網路服務，以支援重要的醫學研究。</li>
+                    <li>分析使用者需求，執行系統/資料庫架構設計，並管理資料轉移。</li>
+                    <li>研究、評估並推薦尖端技術，以加速實現數位轉型目標。</li>
                 </ul>
 
                 <div class="skills-flex">
                     <span class="skill-tag">C# / .NET Core MVC</span>
                     <span class="skill-tag">PHP (Laravel/Symfony)</span>
-                    <span class="skill-tag">JavaScript / React / Angular</span>
+                    <span class="skill-tag">JavaScript / React</span>
                     <span class="skill-tag">MS SQL / MySQL</span>
-                    <span class="skill-tag">Azure DevOps / Git / Jenkins</span>
-                    <span class="skill-tag">Linux / DevOps</span>
+                    <span class="skill-tag">Azure DevOps / Git</span>
+                    <span class="skill-tag">Linux Evangelism</span>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="lang-en">Software Engineering & IT Technician Intern</h3>
+                        <h3 class="lang-zh">軟體工程與資訊科技實習生</h3>
+                        <h4 class="lang-en"><a href="https://systemsGo.asia" target="_blank" style="color: inherit; text-decoration: none;">systemsGo.asia</a></h4>
+                        <h4 class="lang-zh"><a href="https://systemsGo.asia" target="_blank" style="color: inherit; text-decoration: none;">systemsGo.asia</a></h4>
+                    </div>
+                    <span class="date lang-en">1.5 Years</span>
+                    <span class="date lang-zh">1.5 年</span>
+                </div>
+                
+                <p class="lang-en">Served across Pan-Asia corporate offices, bridging the gap between infrastructure maintenance and custom software solutions. Provided comprehensive IT support while developing automation tools to streamline internal workflows.</p>
+                <p class="lang-zh">服務於泛亞太地區的企業辦公室，致力於連接基礎設施維護與客製化軟體解決方案。提供全面的IT支援，同時開發自動化工具以簡化內部工作流程。</p>
+                
+                <div class="skills-flex">
+                    <span class="skill-tag">IT Infrastructure</span>
+                    <span class="skill-tag">Networking</span>
+                    <span class="skill-tag">Internal Tools</span>
+                    <span class="skill-tag">Bilingual Support</span>
+                </div>
+            </div>
+
+            <div class="card edu-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="lang-en">Bachelor of Science in Computer Science</h3>
+                        <h3 class="lang-zh">理學學士 (計算機科學)</h3>
+                        <h4 class="lang-en">The University of Hong Kong</h4>
+                        <h4 class="lang-zh">香港大學</h4>
+                    </div>
+                    <span class="date lang-en"><i class="fas fa-graduation-cap"></i> Degree</span>
+                    <span class="date lang-zh"><i class="fas fa-graduation-cap"></i> 學位</span>
+                </div>
+                
+                <p class="lang-en">Built a strong foundation in software engineering principles, algorithms, and distributed systems, fueling my early passion for open-source technology.</p>
+                <p class="lang-zh">在軟體工程原理、演算法和分散式系統方面建立了堅實的基礎，激發了我早期對開源技術的熱情。</p>
+            </div>
+
         </div>
     </section>
 
     <section id="opensource" class="os-highlight">
-        <h2 class="section-title">Open Source Impact</h2>
-        <p style="margin-bottom: 2rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+        <h2 class="section-title lang-en">Open Source Impact</h2>
+        <h2 class="section-title lang-zh">開源影響力</h2>
+        
+        <p class="lang-en" style="margin-bottom: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
             My commitment to open-source isn't just internal to my job—it extends to the global developer community. 
         </p>
+        <p class="lang-zh" style="margin-bottom: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+            我對開源的承諾不僅限於我的工作內部——它還延伸到了全球開發者社群。
+        </p>
         
-        <div class="cncf-badge">
-            <i class="fab fa-osi" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Meshery Extensions Maintainer</h3>
-            <h4 style="color: var(--primary); margin-bottom: 1rem;">Cloud Native Computing Foundation (CNCF)</h4>
-            <p style="color: #ccc; font-size: 0.95rem;">
-                I am actively involved in maintaining Meshery Extensions, part of the CNCF project Meshery. Through this work, I help build out the cloud-native management plane, collaborating with developers worldwide and championing the ethos of working openly.
-            </p>
+        <div class="os-grid">
+            
+            <div class="os-badge">
+                <i class="fab fa-osi" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                
+                <h3 class="lang-en" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Meshery Extensions Maintainer</h3>
+                <h3 class="lang-zh" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Meshery Extensions 維護者</h3>
+                
+                <h4 class="lang-en" style="color: var(--primary); margin-bottom: 1rem; font-size: 0.95rem;">Cloud Native Computing Foundation (CNCF)</h4>
+                <h4 class="lang-zh" style="color: var(--primary); margin-bottom: 1rem; font-size: 0.95rem;">雲原生運算基金會 (CNCF)</h4>
+                
+                <p class="lang-en" style="color: #ccc; font-size: 0.95rem;">
+                    I am actively involved in maintaining Meshery Extensions. Through this work, I help build out the cloud-native management plane, collaborating with developers worldwide and championing the ethos of working openly.
+                </p>
+                <p class="lang-zh" style="color: #ccc; font-size: 0.95rem;">
+                    我積極參與維護 CNCF 專案 Meshery 的 Extensions 模組。透過這項工作，我協助構建雲原生管理平面，與全球開發者合作，並大力倡導開放式工作的精神。
+                </p>
+            </div>
+
+            <div class="os-badge">
+                <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                
+                <h3 class="lang-en" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Qwen Project Contributor</h3>
+                <h3 class="lang-zh" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Qwen 專案貢獻者</h3>
+                
+                <h4 class="lang-en" style="color: var(--primary); margin-bottom: 1rem; font-size: 0.95rem;">Alibaba Cloud / Hugging Face</h4>
+                <h4 class="lang-zh" style="color: var(--primary); margin-bottom: 1rem; font-size: 0.95rem;">阿里雲 / Hugging Face</h4>
+                
+                <p class="lang-en" style="color: #ccc; font-size: 0.95rem;">
+                    Contributor to Qwen, one of the most downloaded model families globally on Hugging Face. I've assisted in optimizing scalable solutions that range from lightweight laptop versions to heavy-duty data center setups.
+                </p>
+                <p class="lang-zh" style="color: #ccc; font-size: 0.95rem;">
+                    Qwen是Hugging Face上全球下載量最高的模型系列之一。我協助優化了其可擴展解決方案，涵蓋從輕量級筆記型電腦版本到重型資料中心設置。
+                </p>
+            </div>
+
         </div>
     </section>
 
@@ -364,8 +558,44 @@
             <a href="https://github.com/yi-nuo426" target="_blank"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
-        <p>&copy; 2026 Yi Nuo. Built with <i class="fas fa-heart" style="color: var(--primary);"></i> and Open Source.</p>
+        <p class="lang-en">&copy; 2026 Yi Nuo. Built with <i class="fas fa-heart" style="color: var(--primary);"></i> and Open Source.</p>
+        <p class="lang-zh">&copy; 2026 一諾。用 <i class="fas fa-heart" style="color: var(--primary);"></i> 與開源技術構建。</p>
     </footer>
 
+    <script>
+        let currentLang = 'en';
+        
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.lang-en');
+            const zhElements = document.querySelectorAll('.lang-zh');
+            const btnText = document.getElementById('lang-text');
+            
+            if (currentLang === 'en') {
+                enElements.forEach(el => el.style.display = 'none');
+                zhElements.forEach(el => {
+                    if(el.tagName === 'SPAN' || el.tagName === 'I') {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                btnText.textContent = 'English';
+                currentLang = 'zh';
+            } else {
+                zhElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => {
+                    if(el.tagName === 'SPAN' || el.tagName === 'I') {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                btnText.textContent = '中文';
+                currentLang = 'en';
+            }
+        }
+    </script>
 </body>
 </html>
+
+```
