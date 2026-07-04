@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yi Nuo | Open Source Champion & Full-Stack Developer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #009688; /* Energetic tech green */
-            --primary-dark: #00796B;
+            --primary: #8B5E34; /* Warm brown accent */
+            --primary-dark: #6B4423;
             --secondary: #2C3E50;
             --light: #F8F9FA;
             --text-main: #333333;
@@ -26,6 +26,11 @@
             line-height: 1.6;
             color: var(--text-main);
             background-color: var(--light);
+            background-image: url('hku-watermark.svg');
+            background-repeat: no-repeat;
+            background-position: center 20%;
+            background-size: min(720px, 85vw);
+            background-attachment: fixed;
         }
 
         /* Language Toggle Classes */
@@ -103,7 +108,7 @@
         /* Hero Section */
         .hero {
             padding: 8rem 5% 4rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f7f6 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f5efe6 100%);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -183,7 +188,7 @@
         }
 
         .mission-box {
-            background: #f8fcfb;
+            background: #faf5ee;
             padding: 2rem;
             border-left: 4px solid var(--primary);
             border-radius: 0 8px 8px 0;
@@ -231,7 +236,7 @@
             color: var(--primary);
             font-weight: 600;
             font-size: 0.95rem;
-            background: #e0f2f1;
+            background: #f1e6d8;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
         }
@@ -299,9 +304,55 @@
             border-color: var(--primary);
         }
 
+        /* Personal / Beyond Work Section */
+        .personal-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hobby-card {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-card i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hobby-card h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .hobby-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
         /* Footer */
         footer {
-            background: var(--light);
             text-align: center;
             padding: 3rem 5%;
             color: var(--text-muted);
@@ -329,7 +380,7 @@
                 text-align: center;
                 padding-top: 6rem;
             }
-            .about-grid, .os-grid {
+            .about-grid, .os-grid, .hobby-grid {
                 grid-template-columns: 1fr;
             }
             .card-header {
@@ -365,6 +416,10 @@
                     <a href="#opensource" class="lang-en">Open Source</a>
                     <a href="#opensource" class="lang-zh">開源貢獻</a>
                 </li>
+                <li>
+                    <a href="#personal" class="lang-en">Beyond Work</a>
+                    <a href="#personal" class="lang-zh">工作以外</a>
+                </li>
             </ul>
             <button class="lang-btn" onclick="toggleLanguage()">
                 <i class="fas fa-globe"></i> <span id="lang-text">中文</span>
@@ -384,9 +439,10 @@
             <p class="lang-zh">我是一名26歲的技術開發者，致力於構建現代化、穩健的應用程式，同時在傳統企業IT環境中引領開源文化和Linux基礎設施的普及。</p>
             
             <div class="social-links" style="text-align: left; margin-top: 2rem;">
-                <a href="https://github.com/yi-nuo426" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/yi-nuo426" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/yinuocoolio" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.reddit.com/user/Frequent-Fill6561" target="_blank" title="Reddit"><i class="fab fa-reddit-alien"></i></a>
+                <a href="mailto:yinuo084@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
         <div class="hero-image">
@@ -400,8 +456,8 @@
         
         <div class="about-grid">
             <div>
-                <p class="lang-en">Hello! I'm an energetic software developer and IT professional with over three years of experience navigating the dynamic intersection of enterprise technology and digital transformation. I currently serve on the IT team at the prestigious Hong Kong University (HKU).</p>
-                <p class="lang-zh">你好！我是一名充滿活力的軟體開發者和IT專業人員，擁有超過三年的工作經驗，在企業技術與數位轉型的交匯處不斷探索。我目前在知名學府——香港大學 (HKU) 的IT團隊任職。</p>
+                <p class="lang-en">Hello! I'm an energetic software developer and IT professional with over three years of experience navigating the dynamic intersection of enterprise technology and digital transformation. I currently serve on the IT team at the prestigious <a href="https://www.hku.hk" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">The University of Hong Kong (HKU)</a>, the very institution where I earned my Master's degree.</p>
+                <p class="lang-zh">你好！我是一名充滿活力的軟體開發者和IT專業人員，擁有超過三年的工作經驗，在企業技術與數位轉型的交匯處不斷探索。我目前在知名學府——<a href="https://www.hku.hk" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">香港大學 (HKU)</a> 的IT團隊任職，這也是我攻讀碩士學位的母校。</p>
                 <br>
                 <p class="lang-en">My core drive? <strong>Modernization.</strong> I am deeply passionate about introducing Linux-based infrastructures and fostering a true open-source culture on our main campus. I believe that working and learning openly is the fastest path to innovation.</p>
                 <p class="lang-zh">我的核心驅動力是什麼？<strong>現代化。</strong> 我非常熱衷於在我們的主校區引入基於Linux的基礎設施並培養真正的開源文化。我相信開放式的工作與學習是實現創新的最快途徑。</p>
@@ -418,7 +474,7 @@
         </div>
     </section>
 
-    <section id="experience" style="background: var(--light);">
+    <section id="experience">
         <h2 class="section-title lang-en">Experience & Education</h2>
         <h2 class="section-title lang-zh">工作與教育背景</h2>
         
@@ -427,27 +483,31 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <h3 class="lang-en">Programmer (IT Officer)</h3>
-                        <h3 class="lang-zh">程式設計師 (資訊科技主任)</h3>
-                        <h4 class="lang-en">Clinical Trials Centre (HKU-CTC) | The University of Hong Kong</h4>
-                        <h4 class="lang-zh">臨床試驗中心 (HKU-CTC) | 香港大學</h4>
+                        <h3 class="lang-en">Programmer (IT Officer / IT Technician)</h3>
+                        <h3 class="lang-zh">程式設計師 (資訊科技主任 / 技術員)</h3>
+                        <h4 class="lang-en">Clinical Trials Centre (HKU-CTC) | <a href="https://www.hku.hk" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">The University of Hong Kong</a></h4>
+                        <h4 class="lang-zh">臨床試驗中心 (HKU-CTC) | <a href="https://www.hku.hk" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">香港大學</a></h4>
                     </div>
                     <span class="date lang-en">Current</span>
                     <span class="date lang-zh">目前就職</span>
                 </div>
                 
-                <p class="lang-en">Operating within a traditionally Windows-centric IT ecosystem at a leading clinical trials management platform under HKUMed. I manage and facilitate the technology behind international-standard clinical trials on new drugs and medical devices, while championing modern DevOps pipelines.</p>
-                <p class="lang-zh">在香港大學醫學院下屬的頂尖臨床試驗管理平台，於傳統以Windows為主的IT生態系統中運行。我負責管理和推動符合國際標準的新藥及醫療設備臨床試驗背後的技術支援，同時大力倡導現代化的DevOps流程。</p>
+                <p class="lang-en">Operating within a traditionally Windows-centric IT ecosystem at HKU-CTC, a leading clinical trials management platform established under the LKS Faculty of Medicine (HKUMed). I manage and facilitate the technology behind international-standard clinical trials on new drugs, medical devices, and medical technologies, while championing modern DevOps pipelines.</p>
+                <p class="lang-zh">在香港大學醫學院（HKUMed）下屬的頂尖臨床試驗管理平台 HKU-CTC，於傳統以Windows為主的IT生態系統中運行。我負責管理和推動符合國際標準的新藥、醫療設備及醫療技術臨床試驗背後的技術支援，同時大力倡導現代化的DevOps流程。</p>
                 
                 <ul class="lang-en" style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li>Analyze user requirements and contribute to system, database, and architectural design.</li>
                     <li>Design, develop, and deploy in-house IT systems, web applications, and web services supporting crucial medical research.</li>
-                    <li>Analyze user requirements, execute system/database architectural design, and manage data migration.</li>
+                    <li>Conduct system and integration testing, manage data migration, and prepare technical and user documentation.</li>
+                    <li>Maintain, support, and enhance existing systems and applications relied upon by international clinical trials.</li>
                     <li>Research, evaluate, and recommend cutting-edge technologies to accelerate digital transformation.</li>
                 </ul>
                 
                 <ul class="lang-zh" style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li>分析使用者需求，並協助系統、資料庫及架構設計。</li>
                     <li>設計、開發和部署內部IT系統、網路應用程式和網路服務，以支援重要的醫學研究。</li>
-                    <li>分析使用者需求，執行系統/資料庫架構設計，並管理資料轉移。</li>
+                    <li>執行系統及整合測試，管理資料轉移，並編製技術及使用者文件。</li>
+                    <li>維護、支援並強化國際臨床試驗所依賴的現有系統與應用程式。</li>
                     <li>研究、評估並推薦尖端技術，以加速實現數位轉型目標。</li>
                 </ul>
 
@@ -455,6 +515,7 @@
                     <span class="skill-tag">C# / .NET Core MVC</span>
                     <span class="skill-tag">PHP (Laravel/Symfony)</span>
                     <span class="skill-tag">JavaScript / React</span>
+                    <span class="skill-tag">Entity Framework / Bootstrap</span>
                     <span class="skill-tag">MS SQL / MySQL</span>
                     <span class="skill-tag">Azure DevOps / Git</span>
                     <span class="skill-tag">Linux Evangelism</span>
@@ -487,17 +548,48 @@
             <div class="card edu-card">
                 <div class="card-header">
                     <div>
-                        <h3 class="lang-en">Bachelor of Science in Computer Science</h3>
-                        <h3 class="lang-zh">理學學士 (計算機科學)</h3>
-                        <h4 class="lang-en">The University of Hong Kong</h4>
-                        <h4 class="lang-zh">香港大學</h4>
+                        <h3 class="lang-en">Master of Science in Management Information Systems (MIS)</h3>
+                        <h3 class="lang-zh">理學碩士（管理資訊系統）</h3>
+                        <h4 class="lang-en"><a href="https://www.hku.hk" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">The University of Hong Kong</a></h4>
+                        <h4 class="lang-zh"><a href="https://www.hku.hk" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">香港大學</a></h4>
                     </div>
-                    <span class="date lang-en"><i class="fas fa-graduation-cap"></i> Degree</span>
-                    <span class="date lang-zh"><i class="fas fa-graduation-cap"></i> 學位</span>
+                    <span class="date lang-en"><i class="fas fa-graduation-cap"></i> M.S. Degree</span>
+                    <span class="date lang-zh"><i class="fas fa-graduation-cap"></i> 碩士學位</span>
                 </div>
                 
-                <p class="lang-en">Built a strong foundation in software engineering principles, algorithms, and distributed systems, fueling my early passion for open-source technology.</p>
-                <p class="lang-zh">在軟體工程原理、演算法和分散式系統方面建立了堅實的基礎，激發了我早期對開源技術的熱情。</p>
+                <p class="lang-en">I moved to Hong Kong from mainland China specifically to pursue this degree and immerse myself in the city's dynamic tech scene, drawn to its rare blend of Eastern tradition and cutting-edge innovation. My graduate studies let me dive deep into information systems strategy with a particular focus on artificial intelligence for sustainable urban development.</p>
+                <p class="lang-zh">為了攻讀這個學位，我從中國內地移居香港，全心投入這座城市充滿活力的科技生態圈，深深著迷於其東方傳統與尖端創新交融的獨特魅力。我的碩士研究讓我深入鑽研資訊系統策略，並特別專注於「人工智能於可持續城市發展」這個領域。</p>
+                
+                <ul class="lang-en" style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li>Led a cross-functional team in developing an AI-powered application to optimize public transportation routes in cities like Hong Kong, built entirely on a cloud-native, open-source stack.</li>
+                    <li>Completed an internship at a local fintech startup, contributing to blockchain-based security protocols and deepening my appreciation for distributed, open systems.</li>
+                    <li>Solidified a core belief that open, community-driven collaboration is the key to building robust and impactful technology solutions.</li>
+                </ul>
+                
+                <ul class="lang-zh" style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li>帶領跨職能團隊開發一款人工智能應用程式，用以優化香港等城市的公共交通路線，整個專案建構於雲原生、開源技術棧之上。</li>
+                    <li>於本地金融科技新創公司實習，參與區塊鏈安全協議的開發，加深了我對分散式開放系統的認識與熱愛。</li>
+                    <li>更加確信開放、社群共創式的協作，正是打造穩健且具影響力技術解決方案的關鍵。</li>
+                </ul>
+            </div>
+
+            <div class="card edu-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="lang-en">Bachelor of Engineering in Software Engineering</h3>
+                        <h3 class="lang-zh">工學學士（軟體工程）</h3>
+                        <h4 class="lang-en">Tsinghua University</h4>
+                        <h4 class="lang-zh">清華大學</h4>
+                    </div>
+                    <span class="date lang-en"><i class="fas fa-graduation-cap"></i> B.Eng. Degree</span>
+                    <span class="date lang-zh"><i class="fas fa-graduation-cap"></i> 學士學位</span>
+                </div>
+                
+                <p class="lang-en">My foundation in tech was built at Tsinghua University, one of mainland China's foremost engineering institutions. There, I developed a rigorous, hands-on grasp of algorithms and data structures through demanding coursework and collaborative projects, building the analytical discipline that still underpins how I approach engineering problems today.</p>
+                <p class="lang-zh">我的技術根基奠定於清華大學——中國內地首屈一指的工程學府。在那裡，我透過嚴謹的課程與團隊協作專案，扎實地掌握了演算法與資料結構，培養出至今仍支撐我解決工程問題的分析思維與紀律。</p>
+
+                <p class="lang-en" style="margin-top: 1rem;">It was also during these years that my passion for cloud-native infrastructure and open-source software first began to truly flourish—a fascination with how collaborative, community-driven projects could create transformative technology, which has since become a defining thread throughout my career.</p>
+                <p class="lang-zh" style="margin-top: 1rem;">也正是在這段時期，我對雲原生基礎架構與開源軟體的熱情開始真正萌芽——我著迷於協作式、社群驅動的專案如何能催生具變革性的技術，而這份著迷至今仍是貫穿我職業生涯的主軸。</p>
             </div>
 
         </div>
@@ -553,10 +645,44 @@
         </div>
     </section>
 
+    <section id="personal">
+        <h2 class="section-title lang-en">Beyond Work</h2>
+        <h2 class="section-title lang-zh">工作以外的我</h2>
+
+        <p class="personal-intro lang-en">Moving to Hong Kong from mainland China wasn't just a career move—it was a leap into a city whose blend of Eastern tradition and cutting-edge innovation captivated me from day one. Outside of the office and my open-source contributions, here's how I spend my time recharging and staying grounded.</p>
+        <p class="personal-intro lang-zh">從中國內地移居香港，對我而言不僅僅是一次職涯上的轉變——更是一次跳進這座城市的躍動，其東方傳統與尖端創新交織的獨特魅力，從第一天起便深深吸引著我。在辦公室與開源貢獻之外，這是我用來充電、與自我保持連結的方式。</p>
+
+        <div class="hobby-grid">
+            <div class="hobby-card">
+                <i class="fas fa-mountain"></i>
+                <h3 class="lang-en">Trail Hiking</h3>
+                <h3 class="lang-zh">行山遠足</h3>
+                <p class="lang-en">I love exploring Hong Kong's extensive network of hiking trails, from Dragon's Back to the peaks overlooking the harbour—a welcome contrast to hours spent in front of a screen.</p>
+                <p class="lang-zh">我喜歡探索香港四通八達的行山徑，從龍脊到俯瞰維港的山峰，這與長時間對著螢幕的日子形成了美好的對比。</p>
+            </div>
+            <div class="hobby-card">
+                <i class="fas fa-brush"></i>
+                <h3 class="lang-en">Chinese Calligraphy</h3>
+                <h3 class="lang-zh">書法練習</h3>
+                <p class="lang-en">Practicing calligraphy keeps me connected to my cultural roots. The discipline and patience it demands feels like a meditative counterpoint to the fast pace of tech.</p>
+                <p class="lang-zh">練習書法讓我與自己的文化根源保持連結。這門手藝所需的紀律與耐心，彷彿是快節奏科技生活的一種靜心對照。</p>
+            </div>
+            <div class="hobby-card">
+                <i class="fas fa-utensils"></i>
+                <h3 class="lang-en">Fusion Cooking</h3>
+                <h3 class="lang-zh">融合料理</h3>
+                <p class="lang-en">I enjoy experimenting with fusion cuisine that reflects my multicultural experiences—blending flavors from home with the diverse culinary influences I've picked up in Hong Kong.</p>
+                <p class="lang-zh">我喜歡嘗試能反映我多元文化經歷的融合料理，將家鄉的味道與在香港所接觸到的各種飲食文化融合在一起。</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="social-links">
-            <a href="https://github.com/yi-nuo426" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/yi-nuo426" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/yinuocoolio" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.reddit.com/user/Frequent-Fill6561" target="_blank" title="Reddit"><i class="fab fa-reddit-alien"></i></a>
+            <a href="mailto:yinuo084@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <p class="lang-en">&copy; 2026 Yi Nuo. Built with <i class="fas fa-heart" style="color: var(--primary);"></i> and Open Source.</p>
         <p class="lang-zh">&copy; 2026 一諾。用 <i class="fas fa-heart" style="color: var(--primary);"></i> 與開源技術構建。</p>

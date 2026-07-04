@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <!-- Soft, low-opacity decorative monogram used as a page watermark.
+         This is an original generic badge (not the official HKU crest artwork). -->
+    <g opacity="0.06">
+        <circle cx="200" cy="200" r="182" fill="none" stroke="#6B4423" stroke-width="5"/>
+        <circle cx="200" cy="200" r="160" fill="none" stroke="#6B4423" stroke-width="2"/>
+
+        <!-- generic laurel-style ornament, left -->
+        <path d="M62 200 Q84 146 128 122 Q96 164 96 200 Q96 236 128 278 Q84 254 62 200 Z" fill="#6B4423"/>
+        <path d="M76 200 Q92 160 122 138" fill="none" stroke="#F8F9FA" stroke-width="2"/>
+        <path d="M76 200 Q92 240 122 262" fill="none" stroke="#F8F9FA" stroke-width="2"/>
+
+        <!-- generic laurel-style ornament, right -->
+        <path d="M338 200 Q316 146 272 122 Q304 164 304 200 Q304 236 272 278 Q316 254 338 200 Z" fill="#6B4423"/>
+        <path d="M324 200 Q308 160 278 138" fill="none" stroke="#F8F9FA" stroke-width="2"/>
+        <path d="M324 200 Q308 240 278 262" fill="none" stroke="#F8F9FA" stroke-width="2"/>
+
+        <text x="200" y="218" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="bold" letter-spacing="4" fill="#6B4423" text-anchor="middle">HKU</text>
+        <text x="200" y="252" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="6" fill="#6B4423" text-anchor="middle">EST. 1911</text>
+    </g>
+</svg>
